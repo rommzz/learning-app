@@ -19,6 +19,11 @@
         </v-row>
       </v-card-text>
     </v-card>
+    <v-row no-gutters>
+      <v-col>
+        
+      </v-col>
+    </v-row>
     <v-row class="text-center">
       <v-col cols="6" sm="4" md="4" lg="3" xl="2"  v-for="(data, index) in item" :key="index">
         <v-card
@@ -30,26 +35,28 @@
             color="grey">
             <v-img
               :aspect-ratio="1/1"
-              width="100"
+              width="100%"
               :src="data.image_url"
             ></v-img>
             </v-list-item-avatar>
           <v-list-item three-line>
             <v-list-item-content>
-              <div class="overline mb-4" style="border: blue">
-                {{ data.category }}
+              <div class="d-flex ">
+                <div class=" mr-1 pa-1" style="border-radius: 4px; border: 1px solid #047bf8; color: #047bf8">
+                  {{ data.category }}
+                </div>
+                <div v-if="data.is_free" class="pa-1" style="border-radius: 4px; border: 1px solid #22b315; color: #22b315">
+                  {{'Free ' + data.max_purchase + ' item/day' }}
+                </div>
               </div>
-              <div v-if="data.is_free" class="overline mb-4" style="border: blue">
-                {{'Free ' + data.max_purchase + 'item/day' }}
-              </div>
-              <v-list-item-title class="headline mb-1">
+              <v-list-item-title class="headline d-flex mb-1" style="font-size: 16px!important">
                 {{ data.name }}
               </v-list-item-title>
               <v-list-item-subtitle>{{'Rp. ' + data.base_price }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
 
-          <v-card-actions>
+          <!-- <v-card-actions>
             <v-btn
               outlined
               rounded
@@ -57,7 +64,7 @@
             >
               Button
             </v-btn>
-          </v-card-actions>
+          </v-card-actions> -->
         </v-card>
       </v-col>
     </v-row>
